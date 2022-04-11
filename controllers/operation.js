@@ -74,18 +74,18 @@ exports.cashWithdrawalCreditAccount = async (req, res) => {
             positiveBalance = available_credit - credit_limit;
 
             if (positiveBalance > amount_withdraw) {
-                positiveBalance = available_credit - credit_limit - amount_withdraw;
                 totalWithdrawalAmount = amount_withdraw + commission; // Total de deuda de retiro más comisión 0% por retiro en cuenta de crédito
                 creditAccountInfo.available_credit = available_credit - totalWithdrawalAmount;
+                positiveBalance = available_credit - credit_limit - amount_withdraw;
             }
 
             else {
-                positiveBalance = 0;
                 commission = (amount_withdraw - positiveBalance) * 0.05;
                 totalWithdrawalAmount = (amount_withdraw - positiveBalance) + commission; // Total de deuda de retiro más comisión 5% por retiro en cuenta de crédito en lo que exceda
                 creditAccountInfo.available_credit = credit_limit - totalWithdrawalAmount;
                 creditAccountInfo.current_balance = current_balance + totalWithdrawalAmount;
-            }
+                positiveBalance = 0;
+            }            
         }
 
         else {

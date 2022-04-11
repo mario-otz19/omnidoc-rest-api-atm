@@ -8,7 +8,7 @@ const operation = require('./routes/operation');
 
 const server = async() => {
     try {
-        // Conectar y sincronuizar con la bd
+        // Conectar y sincronuizar con la bd        
         dbConnection.sync()
             .then(() => console.log('¡Conectado a la base de datos! :v'))
             .catch((error) => console.log('Error: ', error));
