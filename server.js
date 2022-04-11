@@ -23,8 +23,8 @@ const server = async() => {
         app.use('/api/operation', operation);
 
         // Escucha por el puerto que se configuró en variables de entorno
-        app.listen(process.env.SERVER_PORT, () => {
-            console.log(`Servidor corriendo en el puerto: ${ process.env.SERVER_PORT }`);
+        app.listen(process.env.PORT, () => {
+            console.log(`Servidor corriendo en el puerto: ${ process.env.PORT }`);
         });        
     } 
     
